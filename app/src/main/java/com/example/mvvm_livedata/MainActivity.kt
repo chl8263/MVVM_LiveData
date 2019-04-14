@@ -8,6 +8,7 @@ import com.example.mvvm_livedata.viewmodel.MainViewModel
 import com.example.mvvm_livedata.databinding.ActivityMainBinding
 import com.example.mvvm_livedata.di.modelPart
 import com.example.mvvm_livedata.di.viewModelPart
+import com.example.mvvm_livedata.model.DataModelImpl
 import com.example.mvvm_livedata.model.dto.RepoDTO
 import com.example.mvvm_livedata.model.service.GithubService
 import io.reactivex.Scheduler
@@ -32,22 +33,22 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
 
     override fun initStartView() {
-        val service : GithubService = Retrofit.Builder()
+        /*val service : GithubService = Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.github.com")
             .build()
-            .create(GithubService::class.java)
+            .create(GithubService::class.java)*/
 
-        service.listRepos("chl8263")
+        /*service.listRepos("chl8263")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.e("aa", it.toString())
             },{
                 Log.e("aa", "ㅜㅜ")
-            })
-
+            })*/
+        var a = DataModelImpl()
 
     }
 
