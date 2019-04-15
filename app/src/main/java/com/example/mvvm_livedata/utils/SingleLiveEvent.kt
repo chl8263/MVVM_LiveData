@@ -12,6 +12,7 @@ open class SingleLiveEvent<T> : MutableLiveData<T>(){
 
     private val mPending = AtomicBoolean(false)
 
+    @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
         if(hasActiveObservers()) Log.w("multifle observing","옵저빙이 여러개입니다. 애는 한번만 동작합니다")
 
@@ -27,8 +28,9 @@ open class SingleLiveEvent<T> : MutableLiveData<T>(){
         mPending.set(true)  //atomic boolean 을 true로 바꿔주어 이벤트를 발생시키지 않는다.
         super.setValue(value)
     }
+
     @MainThread
     fun call(){
-
+        setValue(null as T)
     }
 }

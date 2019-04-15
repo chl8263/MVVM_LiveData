@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mvvm_livedata.core.BaseViewModel
 import com.example.mvvm_livedata.model.DataModel
 import com.example.mvvm_livedata.model.dto.RepoDTO
+import com.example.mvvm_livedata.utils.SingleLiveEvent
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -32,6 +33,14 @@ class MainViewModel(private val model:DataModel) : BaseViewModel(){
             })
         )
 
+    }
+
+    private val _startSubActivityEvent = SingleLiveEvent<Any>()
+    val startSubActivityEvent : LiveData<Any>
+        get() = _startSubActivityEvent
+
+    fun goSubActivity(){
+        _startSubActivityEvent.call()
     }
 
 }

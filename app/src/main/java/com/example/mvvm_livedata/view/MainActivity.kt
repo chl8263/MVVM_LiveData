@@ -1,5 +1,6 @@
 package com.example.mvvm_livedata.view
 
+import android.content.Intent
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +37,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             mainRecyclerViewAdapter.notifyDataSetChanged()
         })
 
+        viewModel.startSubActivityEvent.observe(this , Observer {
+            startActivity(Intent(this, SubActivity::class.java))
+        })
+
         //viewModel.getGithubData("chl8263")
         /*val service : GithubService = Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -57,6 +62,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun initAfterBinding() {
         button.setOnClickListener {
             viewModel.getGithubData(editText.text.toString())
+        }
+        goSub.setOnClickListener {
+            viewModel.goSubActivity()
         }
     }
 }
