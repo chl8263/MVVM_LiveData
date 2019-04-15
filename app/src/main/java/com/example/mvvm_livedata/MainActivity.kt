@@ -33,6 +33,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
 
     override fun initStartView() {
+
+        viewModel.getGithubData("chl8263")
         /*val service : GithubService = Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
@@ -48,7 +50,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             },{
                 Log.e("aa", "ㅜㅜ")
             })*/
-        var a = DataModelImpl()
+
 
     }
 
