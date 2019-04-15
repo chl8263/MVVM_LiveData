@@ -4,6 +4,7 @@ import com.example.mvvm_livedata.R
 import com.example.mvvm_livedata.core.BaseActivity
 import com.example.mvvm_livedata.viewmodel.MainViewModel
 import com.example.mvvm_livedata.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -16,6 +17,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
 
     override fun initStartView() {
+
+        recyclerView.run {
+            adapter =
+        }
 
         viewModel.getGithubData("chl8263")
         /*val service : GithubService = Retrofit.Builder()
