@@ -1,27 +1,10 @@
-package com.example.mvvm_livedata
+package com.example.mvvm_livedata.view
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
+import com.example.mvvm_livedata.R
 import com.example.mvvm_livedata.core.BaseActivity
 import com.example.mvvm_livedata.viewmodel.MainViewModel
 import com.example.mvvm_livedata.databinding.ActivityMainBinding
-import com.example.mvvm_livedata.di.modelPart
-import com.example.mvvm_livedata.di.viewModelPart
-import com.example.mvvm_livedata.model.DataModelImpl
-import com.example.mvvm_livedata.model.dto.RepoDTO
-import com.example.mvvm_livedata.model.service.GithubService
-import io.reactivex.Scheduler
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
