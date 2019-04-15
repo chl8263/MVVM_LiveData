@@ -1,5 +1,6 @@
 package com.example.mvvm_livedata.di
 
+import com.example.mvvm_livedata.adapter.MainRecyclerViewAdapter
 import com.example.mvvm_livedata.model.DataModel
 import com.example.mvvm_livedata.model.DataModelImpl
 import com.example.mvvm_livedata.model.service.GithubService
@@ -23,6 +24,11 @@ var retrofitPart = module {
 
 }
 
+var adapterPart = module {
+    factory {
+        MainRecyclerViewAdapter()
+    }
+}
 
 var modelPart = module {
     factory<DataModel> {
@@ -37,4 +43,4 @@ var viewModelPart = module {
 }
 
 
-var myDiModule = listOf(modelPart, viewModelPart, retrofitPart)
+var myDiModule = listOf(modelPart, viewModelPart, retrofitPart, adapterPart)
