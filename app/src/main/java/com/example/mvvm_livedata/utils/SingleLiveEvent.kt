@@ -17,9 +17,9 @@ open class SingleLiveEvent<T> : MutableLiveData<T>(){
         if(hasActiveObservers()) Log.w("multifle observing","옵저빙이 여러개입니다. 애는 한번만 동작합니다")
 
         //super.observe(owner, observer)
-        super.observe(owner, Observer {
+        super.observe(owner, Observer { t ->
             if(mPending.compareAndSet(true,false))  // 첫번재 파라메터 : 기댓값 , false면 동작
-                observer.onChanged(it)
+                observer.onChanged(t)
         })
     }
 
@@ -31,6 +31,6 @@ open class SingleLiveEvent<T> : MutableLiveData<T>(){
 
     @MainThread
     fun call(){
-        setValue(null as T)
+        value = null
     }
 }
