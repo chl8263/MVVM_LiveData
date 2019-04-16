@@ -35,7 +35,7 @@ class MainViewModel(private val model:DataModel) : BaseViewModel(){
 
     }
 
-    private val _startSubActivityEvent = SingleLiveEvent<Any>()
+    val _startSubActivityEvent = SingleLiveEvent<Any>()
     val startSubActivityEvent : LiveData<Any>
         get() = _startSubActivityEvent
 

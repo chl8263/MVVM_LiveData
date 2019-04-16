@@ -18,19 +18,28 @@ open class SingleLiveEvent<T> : MutableLiveData<T>(){
 
         //super.observe(owner, observer)
         super.observe(owner, Observer { t ->
-            if(mPending.compareAndSet(true,false))  // 첫번재 파라메터 : 기댓값 , false면 동작
+            if (!mPending.get()) {
                 observer.onChanged(t)
+                mPending.set(true)
+            }
+            else return@Observer
+            /*if(mPending.compareAndSet(true,false)) {
+                observer.onChanged(t)
+            }
+            else return@Observer*/
         })
     }
 
     @MainThread
     override fun setValue(value: T) {
-        mPending.set(true)  //atomic boolean 을 true로 바꿔주어 이벤트를 발생시키지 않는다.
+        //mPending.set(true)  //atomic boolean 을 true로 바꿔주어 이벤트를 발생시키지 않는다.
         super.setValue(value)
     }
 
     @MainThread
     fun call(){
-        value = null
+        //mPending.set(true)
+        Log.e("a",mPending.toString())
+        setValue(null as T)
     }
 }
